@@ -1,0 +1,231 @@
+$theme-color: rgba(120, 31, 166, 0.99);
+$theme-alt-color: rgba(177, 53, 244, 0.99);
+.color-radios {
+    div {
+        display: inline-block;
+    }
+
+    input[type="radio"] {
+        display: none;
+
+        + label {
+            color: #333;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+
+            span {
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+                margin: -1px 4px 0 0;
+                vertical-align: middle;
+                cursor: pointer;
+                border-radius: 50%;
+                border: 2px solid #ffffff;
+                box-shadow: 0 1px 3px 0 rgba(0,0,0, 0.33);
+                background-repeat: no-repeat;
+                background-position: center;
+                text-align: center;
+                line-height: 36px;
+                i{
+                    opacity: 0;
+                    transition: all .3s ease;
+                }
+            }
+        }
+
+        &#white + label span {
+            background-color: #FFFFFF;
+        }
+
+        &#black + label span {
+            background-color: #000000;
+        }
+
+        &#green + label span {
+            background-color: green;
+        }
+
+        &#yellow + label span {
+            background-color: yellow;
+        }
+
+        &#coral + label span {
+            background-color: #ff7f50;
+        }
+
+        &#purple + label span {
+            background-color: #800080;
+        }
+
+        &#grey + label span {
+            background-color: #808080;
+        }
+
+        &#gold + label span {
+            background-color: #ffd700;
+        }
+
+        &#silver + label span {
+            background-color: #c0c0c0;
+        }
+        &#silver + label span{
+            background-color: silver;
+        }
+        &#rose-gold + label span{
+            background-color: #B76E79;
+        }
+        &#pink + label span{
+            background-color: pink;
+        }
+        &#red + label span{
+            background-color: red;
+        }
+        &#yellow + label span{
+            background-color: yellow;
+        }
+        &#prisam + label span{
+            background-color: #ded5c6;
+        }
+        &#space-grey + label span{
+            background-color: #a7adba;
+        }
+        &#prism-white + label span{
+            background-color: #ded5c6;
+        }
+        &#prism-black + label span{
+            background-color: #b4dcf0;
+        }
+        &#prism-green + label span{
+            background-color: #e7eee7;
+        }
+        &#twilight + label span{
+            background-color: #8a496b;
+        }
+        &#aurora-blue + label span{
+            background-color: #a3d7da;
+        }
+        &#breathing-crystal + label span{
+            background-color: #c8e5eb;
+        }
+        &#amber-sunrise + label span{
+            background-color: #ffbf00;
+        }
+
+        &:checked + label span i {
+            opacity: 1;
+        }
+    }
+}
+.radio-toolbar {
+    margin: 10px;
+    input[type="radio"] {
+        opacity: 0;
+        position: fixed;
+        width: 0;
+        &:focus {
+            + {
+                label {
+                    border: 2px dashed #fff;
+                }
+            }
+        }
+        &:checked {
+            + {
+                label {
+                    background-color: $theme-color;
+                    color:#ffffff;
+                    border-color: $theme-alt-color;
+                }
+            }
+        }
+    }
+    label {
+        display: inline-block;
+        color:$theme-color;
+        background-color: rgba(252, 252, 252, .72);
+        padding: .25rem .75rem;
+        font-size: 1rem;
+        border: 1px solid $theme-color;
+        border-radius: 1rem;
+        &:hover {
+            background-color: $theme-color;
+            color:#ffffff;
+            border-color: $theme-alt-color;
+        }
+    }
+
+    label.network{
+        padding: 0!important;
+        border-radius: 0!important;
+        border: 1px solid $theme-alt-color !important;
+        &:hover{
+            background-color: transparent!important;
+            color: #000;
+            border-color: transparent!important;
+        }
+    }
+}
+.btn-theme{
+    background: $theme-color;
+    color: rgb(255, 255, 255);
+    border-color: $theme-alt-color;
+    &:hover{
+        background: lighten($theme-color, 5%)!important;
+        color: rgb(255, 255, 255)!important;
+        border-color: darken($theme-alt-color, 2.5%)!important;
+    }
+}
+.btn-outline-theme{
+    background: transparent;
+    color: $theme-color;
+    border-color: $theme-color;
+    &:hover{
+        background: $theme-color!important;
+        color: rgb(255, 255, 255)!important;
+        border-color: darken($theme-alt-color, 2.5%)!important;
+    }
+}
+.badge-theme{
+    color:white;
+    background-color:$theme-color!important;
+}
+.pill-theme{
+    color:white;
+    background-color:$theme-color!important;
+}
+.pro-details-policy{
+    .features{
+        span{
+            font-size: 14px;
+            font-weight: bold;
+            padding:.5rem;
+            margin-bottom: .5rem;
+        }
+    }
+}
+.pricing-meta{
+    @media screen and (min-width: 767px){
+        padding-right: 25%;
+    }
+    .update-price{
+        color:$theme-color;
+        font-weight: bold;
+        border-radius: .5rem;
+        border:1px solid $theme-alt-color;
+        padding: .25rem;
+        &:hover{
+            background: $theme-color;
+            color:white;
+        }
+    }
+}
+.text-theme{
+    color: $theme-color!important;
+}
+.tp-widget-trustscore{
+    color: $theme-color!important;
+}
+.tp-widget-rating{
+    color: $theme-alt-color!important;
+}

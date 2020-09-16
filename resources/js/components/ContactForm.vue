@@ -1,0 +1,76 @@
+<template>
+    <form class="contact-form-style" @submit.prevent="onSubmit" method="post">
+        <div class="alert alert-success alert-dismissible fade show" role="alert" v-if="saved">
+            <strong>Thank you!</strong> Our Expert will contact you back as soon as possible.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 mb-3">
+                <input id="name" :class="{'is-invalid': errors.name}" class="form-control" placeholder="Name *" v-model="contact.name" type="text" name="name" required/>
+                <div v-if="errors.name" class="font-weight-bold invalid-feedback">{{ errors.name[0] }}</div>
+            </div>
+            <div class="col-lg-6 mb-3">
+                <input name="email" :class="{'is-invalid': errors.email}" class="form-control" placeholder="Email*" v-model="contact.email" type="email"  required/>
+                <div v-if="errors.email" class="font-weight-bold invalid-feedback">{{ errors.email[0] }}</div>
+            </div>
+            <div class="col-lg-6 mb-3">
+                <input name="phone" :class="{'is-invalid': errors.phone}" class="form-control" placeholder="Phone*" v-model="contact.phone" type="text" required/>
+                <div v-if="errors.phone" class="font-weight-bold invalid-feedback">{{ errors.phone[0] }}</div>
+            </div>
+            <div class="col-lg-6 mb-3">
+                <input name="subject" :class="{'is-invalid': errors.model}" class="form-control" placeholder="Subject *" v-model="contact.subject" type="text" required/>
+                <div v-if="errors.subject" class="font-weight-bold invalid-feedback">{{ errors.subject[0] }}</div>
+            </div>
+            <div class="col-lg-12">
+                <textarea name="message" placeholder="Details" v-model="contact.message"></textarea>
+                <button class="submit" type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+</template>
+
+<script>
+    export default {
+        name: "ContactForm",
+        data(){
+            return{
+                errors:[],
+                saved:false,
+                contact:{
+                    name:'',
+                    email:'',
+                    phone:'',
+                    subject:'',
+                    message:'',
+                }
+
+            }
+        },
+        methods:{
+            onSubmit(){
+                this.saved = false;
+                axios.post( '/contact-us', this.contact)
+                    .then(({data}) => this.setSuccessMessage())
+                    .catch(({response}) => this.setErrors(response));
+            },
+            setSuccessMessage(){
+                this.resetForm();
+                this.saved = true;
+            },
+
+            setErrors(response){
+                this.errors = response.data.errors;
+            },
+            resetForm() {
+                this.errors = [];
+                this.contact = {name: null, email: null, phone: null, subject: null, message: null};
+            }
+        }
+    }
+</script>
+
+<style scoped>
+
+</style>
